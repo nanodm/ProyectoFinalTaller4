@@ -1,0 +1,94 @@
+<div class="example-container">
+  <div>
+    <mat-card class="tarjeta">
+      <mat-card-header>
+        <mat-card-title>{{ paciente.nombre }}</mat-card-title>
+      </mat-card-header>
+      <img mat-card-image class="foto" alt="gato" mat-card-image *ngIf="paciente.especie == 'felino'"
+        src="assets/image/gato.png">
+      <img mat-card-image class="foto" alt="perro" mat-card-image *ngIf="paciente.especie == 'canino'"
+        src="assets/image/perro.png">
+    </mat-card>
+  </div>
+
+  <mat-tab-group>
+    <mat-tab label="Ver datos">
+      <div>
+        <mat-list class="datos">
+          <mat-list-item>
+            <p><b>Nombre: </b> {{ paciente.nombre }} </p>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item>
+            <p><b>Especie: </b> {{ paciente.especie }} </p>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item>
+            <p><b>Sexo: </b> {{ paciente.sexo }} </p>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item>
+            <p><b>Dueño: </b> {{ nombreDuenio }} {{ apellidoDuenio }} </p>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item>
+            <p><b>Teléfono del dueño: </b> {{ telefonoDuenio }} </p>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item>
+            <p><b>Id: </b> {{ paciente.id }} </p>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+        </mat-list>
+      </div>
+    </mat-tab>
+    <mat-tab label="Modificar datos">
+      <div>
+        <form class="formulario" [formGroup]="profileForm" (ngSubmit)="updatePaciente()">
+          <div>
+            <mat-form-field class="formField">
+              <input matInput placeholder="Nombre del paciente" formControlName="nombrePaciente" required>
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field class="formField">
+              <mat-select placeholder="Especie" formControlName="especie" required>
+                <mat-option value="felino">Felino</mat-option>
+                <mat-option value="canino">Canino</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field class="formField">
+              <mat-select placeholder="Sexo" formControlName="sexo" required>
+                <mat-option value="Macho">Macho</mat-option>
+                <mat-option value="Hembra">Hembra</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field>
+              <mat-label>Dueño</mat-label>
+              <!--<mat-select [(value)]="selected">-->
+              <mat-select [(value)]="selected" matInput formControlName="duenio" required>
+                <mat-option *ngFor="let duenio of duenios" [value]="duenio">
+                  {{ duenio.nombre }} {{ duenio.apellido }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <br>
+          <button class="button" mat-raised-button color="primary" type="submit" [disabled]="!profileForm.valid">
+            Guardar cambios
+          </button>
+        </form>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+  <br>
+  <div>
+    <button mat-raised-button color="primary" [routerLink]="['/pacientes']">
+      Regresar
+    </button>
+  </div>
+</div>

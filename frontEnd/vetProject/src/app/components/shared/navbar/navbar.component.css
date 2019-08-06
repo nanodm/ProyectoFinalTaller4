@@ -1,0 +1,34 @@
+.app-navbar {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .right {
+    margin-left: auto;
+    float: right;
+  }
+  
+  .app-navbar span {
+    text-transform: uppercase !important;
+  }
+  
+  .app-angular-logo {
+    margin: 0 4px 3px 0;
+    height: 26px;
+  }
+
+  .example-icon {
+    padding: 0 14px;
+  }
+
+  .example-form {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  #search-form {
+    padding: 5px 5px;
+    line-height: 26px;
+    border-radius: 5px;
+  }

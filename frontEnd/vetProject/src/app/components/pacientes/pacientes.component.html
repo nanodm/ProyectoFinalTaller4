@@ -1,0 +1,42 @@
+<div style="text-align:center">
+  <h1 class="mat-display-3 animated fadeIn">Registro de pacientes</h1>
+</div>
+
+<div>
+  <app-formulario (actualizar)="addPaciente($event)"></app-formulario>
+</div>
+
+<div>
+  <div class="buttonContainer">
+    <button class="botones" mat-raised-button color="primary" (click)="showAllPacientes(); mostrarDatos()">
+      Mostrar lista de pacientes
+    </button>
+    <button class="botones" mat-raised-button color="primary" (click)="mostrar = false">
+      Ocultar lista de pacientes
+    </button>
+    <button class="botones" mat-raised-button color="warn" (click)="deleteAllPacientes(); mostrar = false">
+      Eliminar todos
+    </button>
+  </div>
+  <br>
+  <br>
+  <div class="listaPacientes" *ngIf="mostrar">
+    <mat-nav-list class="animated fadeIn">
+      <mat-list-item *ngFor="let paciente of pacientes">
+        <a matLine [routerLink]="['/paciente', paciente.id]">
+          <div class="flex-container">
+            <mat-icon matListIcon>pets</mat-icon>
+            <h3 matLine> {{ paciente.nombre }} </h3>
+          </div>
+        </a>
+        <div class="right">
+          <button mat-stroked-button mat-ripple (click)="deletePaciente(paciente.id)">
+            <!--(click)="deletePaciente(id)">-->
+            <i class="material-icons">delete</i>
+          </button>
+        </div>
+        <mat-divider></mat-divider>
+      </mat-list-item>
+    </mat-nav-list>
+  </div>
+</div>

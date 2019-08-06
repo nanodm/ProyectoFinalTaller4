@@ -1,0 +1,28 @@
+<div class="example-container">
+  <h1>Buscando: <small> {{ termino }} </small></h1>
+
+  <div role="alert" *ngIf="pacientes == 0">
+    <p>
+      No existen resultados con el término {{ termino }}.
+    </p>
+  </div>
+  <br>
+  <div fxLayout="row wrap" fxLayoutWrap>
+    <div fxFlex="20">
+      <mat-card class="foundCard" *ngFor="let paciente of pacientes">
+        <mat-card-header>
+          <mat-card-title>{{ paciente.nombre }}</mat-card-title>
+        </mat-card-header>
+        <img mat-card-image class="foto" alt="gato" mat-card-image *ngIf="paciente.especie == 'felino'"
+          src="assets/image/gato.png">
+        <img mat-card-image class="foto" alt="perro" mat-card-image *ngIf="paciente.especie == 'canino'"
+          src="assets/image/perro.png">
+        <mat-card-actions>
+          <button mat-raised-button color="primary" [routerLink]="['/paciente', paciente.id]">
+            Ver más
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>

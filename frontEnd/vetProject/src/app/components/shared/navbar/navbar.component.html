@@ -1,0 +1,32 @@
+<mat-toolbar color="primary" class="app-navbar">
+  <div>
+    <button mat-button mat-ripple [routerLink]="['/home']">
+      <!-- routerLinkActive="mat-accent"-->
+      <img alt="vetproject" class="app-angular-logo" src="assets/image/angular-white-transparent.svg">
+      <span>VetProject</span>
+    </button>
+    <button mat-button mat-ripple [routerLink]="['/duenios']">
+      <span>Clientes</span>
+    </button>
+    <button mat-button mat-ripple [routerLink]="['/pacientes']">
+      <span>Pacientes</span>
+    </button>
+  </div>
+
+  <div class="right">
+    <div fxFlex="1 1 auto" fxLayout="row" fxLayoutAlign="flex-end center">
+
+      <form>
+        <!--<input id="buscarPaciente" placeholder="Buscar paciente" #buscar>-->
+        <input id="search-form" type="text" placeholder="Buscar paciente"
+        (keyup.enter)="buscarPaciente(searchPaciente.value)" #searchPaciente>
+
+        <button (click)="buscarPaciente(searchPaciente.value)"
+        mat-button mat-ripple type="button">
+          <i class="material-icons">search</i>
+        </button>
+      </form>
+
+    </div>
+  </div>
+</mat-toolbar>

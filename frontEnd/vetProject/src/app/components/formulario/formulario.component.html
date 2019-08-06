@@ -1,0 +1,50 @@
+<div class="example-container">
+  <form class="formulario" [formGroup]="profileForm" (ngSubmit)="submitPaciente()">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header class="panel">
+        <mat-panel-title>
+          Agregar paciente
+        </mat-panel-title>
+        <mat-panel-description>
+          Formulario para ingreso de pacientes
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <div>
+        <mat-form-field class="formField">
+          <input matInput placeholder="Nombre del paciente" formControlName="nombrePaciente" required>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="formField">
+          <mat-select placeholder="Especie" formControlName="especie" required>
+            <mat-option value="felino">Felino</mat-option>
+            <mat-option value="canino">Canino</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="formField">
+          <mat-select placeholder="Sexo" formControlName="sexo" required>
+            <mat-option value="Macho">Macho</mat-option>
+            <mat-option value="Hembra">Hembra</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <mat-label>Dueño</mat-label>
+          <mat-select [(value)]="selected" matInput formControlName="duenio" required>
+            <mat-option *ngFor="let duenio of duenios" [value]="duenio">
+              {{ duenio.nombre }} {{ duenio.apellido }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <br>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!profileForm.valid">
+        Añadir paciente
+      </button>
+    </mat-expansion-panel>
+  </form>
+</div>

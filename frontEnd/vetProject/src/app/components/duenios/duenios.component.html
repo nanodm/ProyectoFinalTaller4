@@ -1,0 +1,81 @@
+<div style="text-align:center">
+  <h1 class="mat-display-3 animated fadeIn">Registro de clientes</h1>
+</div>
+
+<div class="example-container">
+  <form class="formulario" [formGroup]="profileForm" (ngSubmit)="submitCliente()">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header class="panel">
+        <mat-panel-title>
+          Agregar cliente
+        </mat-panel-title>
+        <mat-panel-description>
+          Formulario para ingreso de clientes
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <div>
+        <mat-form-field class="formField">
+          <input matInput placeholder="Nombre del cliente" formControlName="nombre" required>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="formField">
+          <input matInput placeholder="Apellido del cliente" formControlName="apellido" required>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="formField">
+          <mat-select placeholder="Sexo" formControlName="sexo" required>
+            <mat-option value="Hombre">Hombre</mat-option>
+            <mat-option value="Mujer">Mujer</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="formField">
+          <input matInput placeholder="Teléfono de contacto" formControlName="telefono" required>
+          <mat-icon matSuffix>phone</mat-icon>
+          <mat-hint>Incluya código de área</mat-hint>
+        </mat-form-field>
+      </div>
+      <br>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!profileForm.valid">
+        Añadir cliente
+      </button>
+    </mat-expansion-panel>
+  </form>
+</div>
+
+<div>
+  <div class="buttonContainer">
+    <button class="botones" mat-raised-button color="primary" (click)="showAllClientes(); mostrarDatos()">
+      Mostrar lista de clientes
+    </button>
+    <button class="botones" mat-raised-button color="primary" (click)="mostrar = false">
+      Ocultar lista de clientes
+    </button>
+    <button class="botones" mat-raised-button color="warn" (click)="deleteAllClientes(); mostrar = false">
+      Eliminar todos
+    </button>
+  </div>
+  <br>
+  <br>
+  <div class="listaClientes" *ngIf="mostrar">
+    <mat-nav-list class="animated fadeIn">
+      <mat-list-item *ngFor="let cliente of clientes">
+        <a matLine [routerLink]="['/duenio', cliente.id]">
+          <div class="flex-container">
+            <h3 matLine> {{ cliente.nombre }} {{ cliente.apellido }} </h3>
+          </div>
+        </a>
+        <div class="right">
+          <button mat-stroked-button mat-ripple (click)="deleteCliente(cliente.id)">
+            <i class="material-icons">delete</i>
+          </button>
+        </div>
+        <mat-divider></mat-divider>
+      </mat-list-item>
+    </mat-nav-list>
+  </div>
+</div>

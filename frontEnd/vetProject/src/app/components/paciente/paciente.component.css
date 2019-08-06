@@ -1,0 +1,13 @@
+.datos {
+    margin-left: 25px;
+    float: left;
+}
+
+button {
+    margin: auto;
+    display: block;
+}
+
+.button {
+    margin-left: 2px;
+}

@@ -1,0 +1,29 @@
+.right {
+    margin-left: auto;
+    float: right;
+}
+
+.buttonContainer {
+    display: flex;
+    height: 10px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 10px;
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.botones {
+    flex-grow: 1;
+    flex-shrink: 1;
+    margin-right: 15px;
+    margin-left: 25px;
+  }
+
+.listaClientes {
+    margin-left: 100px;
+    margin-right: 100px;
+}
